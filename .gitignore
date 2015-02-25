@@ -10,3 +10,9 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+#temporary makefile
+1_ACMAKER/Makefile
+2_BABY/Makefile
+3_BORW/Makefile
+4_MAXWOODS/Makefile
