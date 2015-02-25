@@ -3,43 +3,49 @@
  * @author David Lilue, 09-10444
  */
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class p1
 {
+    public static String convertStreamToString(java.io.InputStream is)
+    {
+        java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
+        return s.hasNext() ? s.next() : "";
+    }
 
-	public static String convertStreamToString(java.io.InputStream is)
-	{
-    	java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
-    	return s.hasNext() ? s.next() : "";
-	}
+    public static void main (String[] args)
+    {
+        // String of the input.
+        String file = convertStreamToString(System.in);
+        // int    len  = file.length();
 
-	public static void main (String[] args)
-	{
-		// String to be scanned to find the pattern.
-	    String file = convertStreamToString(System.in);
-	    
-	    String pattern = "(\\A\\d+\\s*)";
+        String[] splitArray = file.split("\n+");
 
-	    // Create a Pattern object
-	    Pattern r = Pattern.compile(pattern);
+        String s = "";
+        int insg = Integer.parseInt(splitArray[0]),
+            p    = 1,
+            i    = 0;
 
-	    // Now create matcher object.
-	    Matcher m = r.matcher(file);
+        while (insg != 0)
+        {
+            System.out.println("Palabras insignificantes:");
 
-	    String value = "";
+            while (i < insg)
+            {
+                System.out.println("--> " + splitArray[p++]);
+                i++;
+            }
 
-	    while (m.find())
-	    {
-	    	value = m.group(0);
+            i = 0;
+            s = splitArray[p++];
 
-	        System.out.println("Found value: " + value);
+            while (!s.equals("LAST CASE"))
+            {
+                System.out.println("Acronino: " + s);
 
-	        file = file.substring(value.length(), file.length());
+                s = splitArray[p++];
+            }
 
-	        m = r.matcher(file);
-	    }
-	}
+            insg = Integer.parseInt(splitArray[p++]);
+        }
+    }
 }
 
