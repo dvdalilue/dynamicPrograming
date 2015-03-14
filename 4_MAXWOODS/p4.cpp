@@ -38,7 +38,9 @@ int main(int argc, char const *argv[])
         getline(cin, input_line, '\n');
         std::istringstream(input_line) >> n;
 
-        matrix = new int[m][n];
+        matrix = new int*[m];
+        for (j = 0; j < m; ++j)
+        	matrix[j] = new int[n];
 
         for(j = 0; j<m; j++)
         {
@@ -63,6 +65,9 @@ int main(int argc, char const *argv[])
             }
             cout << input_line << "\n"; // c = infix[i]; //this is your character
         }
+        for (j = 0; j < m; ++j)
+        	delete [] matrix[j];
+        delete [] matrix;
         i++;
     }
     return 0;
