@@ -46,6 +46,7 @@ public class p1
 		Integer maxK,
 		Integer occurrence)
 	{
+		System.out.println("entr");
 		Integer c0 = 1,
 				v0 = 0,
 				v1 = 0,
